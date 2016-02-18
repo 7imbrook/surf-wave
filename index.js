@@ -8,9 +8,9 @@ const jsdom      = require('jsdom'),
 ;
 
 let client = influx({
-  host: "192.168.99.100",
-  username: "admin",
-  password: "admin",
+  host: process.env.IN_HOST || "192.168.99.100",
+  username: process.env.IN_USER,
+  password: process.env.IN_PASS,
   database: "modem"
 });
 
@@ -57,6 +57,7 @@ function scrapeLogData(table) {
       return acc;
     }, [{}]);
   });
+  console.log(data);
   client.writePoints('logs', data, (err, res) => {
     console.log(err, res);
   });
