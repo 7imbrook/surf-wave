@@ -35,7 +35,7 @@ Object.keys(ENDPOINTS_TO_PULL).forEach( ep => {
 
 function scrapeLogData(table) {
   let data = Array.from(table.rows)
-  .slice(1)
+  .slice(1) // Removes table headers
   .map( row => {
     return Array.from(row.cells).map( (i, idx) => {
       switch (idx) {
@@ -43,7 +43,6 @@ function scrapeLogData(table) {
           return { time: (new Date(i.innerHTML)).getTime() };
         case 1:
           let value = parseInt(i.innerHTML[0]);
-          console.log(typeof value)
           return { status: i.innerHTML, code: value };
         case 3:
           return { message: i.innerHTML };
