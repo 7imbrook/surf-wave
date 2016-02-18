@@ -58,7 +58,7 @@ function scrapeLogData(table) {
       return acc;
     }, [{}]);
   });
-  client.writePoints('test_series', data, (err, res) => {
+  client.writePoints('logs', data, (err, res) => {
     console.log(err, res);
   });
 }
