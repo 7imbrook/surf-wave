@@ -1,9 +1,6 @@
 'use strict';
 
 const jsdom      = require('jsdom'),
-      tableToCsv = require('node-table-to-csv'),
-      fs         = require('fs'),
-      crypto     = require('crypto'),
       influx     = require('influx')
 ;
 
